@@ -1,6 +1,6 @@
 import React from "react";
-import LandingPage from "./pages/LandingPage";
-import MissionStatementPage from "./pages/MissionStatement";
+import LandingPage from "./LandingPage";
+import MissionStatementPage from "./MissionStatement";
 
 const HomePage = () => {
   return (
