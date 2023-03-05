@@ -2,15 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { api } from "./../api/api";
 import { Permission, Role } from "appwrite";
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Box, Button, MenuItem, TextField } from "@mui/material";
 
 const AddPostPage = () => {
   const navigate = useNavigate();
@@ -82,7 +74,7 @@ const AddPostPage = () => {
             required
             onChange={(e) => setPost({ ...post, name: e.target.value })}
             size="small"
-            fullWidth
+            fullwidth="true"
           />
           <TextField
             id="description"
@@ -92,9 +84,8 @@ const AddPostPage = () => {
             maxRows={4}
             onChange={(e) => setPost({ ...post, description: e.target.value })}
             size="small"
-            fullWidth
+            fullwidth="true"
           />
-
           <TextField
             id="condition"
             select
@@ -103,7 +94,7 @@ const AddPostPage = () => {
             required
             defaultValue={""}
             onChange={(e) => setPost({ ...post, condition: e.target.value })}
-            fullWidth
+            fullwidth="true"
           >
             {Object.values(ConditionsEnum).map((condition) => (
               <MenuItem key={condition} value={condition}>
@@ -124,7 +115,7 @@ const AddPostPage = () => {
             required
             onChange={(e) => setPost({ ...post, location: e.target.value })}
             size="small"
-            fullWidth
+            fullwidth="true"
           />
 
           <TextField
@@ -135,7 +126,7 @@ const AddPostPage = () => {
             required
             defaultValue={""}
             onChange={(e) => setPost({ ...post, category: e.target.value })}
-            fullWidth
+            fullwidth="true"
           >
             {Object.values(CategoriesEnum).map((category) => (
               <MenuItem key={category} value={category}>
@@ -149,6 +140,24 @@ const AddPostPage = () => {
               </MenuItem>
             ))}
           </TextField>
+          <input
+            style={{ display: "none" }}
+            id="condition"
+            multiple
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+            required
+          />
+          <label htmlFor="condition">
+            <Button
+              variant="raised"
+              component="span"
+              style={{ textTransform: "none" }}
+              fullWidth
+            >
+              Upload Picture
+            </Button>
+          </label>
           <Button
             type="submit"
             disabled={

@@ -32,7 +32,9 @@ function App() {
             path="/browse"
             element={<Browse />}
             // element={<Browse setSelectedPostId={setSelectedPostId} />}
-          />
+          >
+            <Route path=":category" element={<Browse />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

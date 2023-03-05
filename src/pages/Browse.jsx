@@ -1,6 +1,7 @@
 import React from "react";
 import BrowseHeader from "../components/BrowseHeader";
 import BrowseBody from "../components/BrowseBody";
+import { Grid } from "@mui/material";
 
 const Browse = () => {
   return (
