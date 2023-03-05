@@ -23,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/posting" element={<AddPostPage />} />
+          <Route path="/browse" element={<Browse />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
