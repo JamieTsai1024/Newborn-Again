@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import BrowseByCategory from "./BrowseByCategory";
 import LandingPage from "./LandingPage";
 import MissionStatementPage from "./MissionStatement";
-import { account } from "./../api/api";
+import { api } from "./../api/api";
 
 const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
   const navigate = useNavigate();
@@ -19,15 +19,19 @@ const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
 
   // TODO: comment to not kick out unlogged in users - do we want unauthed users?
   useEffect(() => {
-    console.log("hi again");
-    account
-      .get()
+    // account
+    api
+      .provider()
+      .account.get()
       .then((account) => setUser(account))
       .catch((error) => navigate("/login"));
   }, []);
 
   const handleLogOut = async () =>
-    await account.deleteSession("current").then(() => navigate("/login"));
+    await api
+      .provider()
+      .account.deleteSession("current")
+      .then(() => navigate("/login"));
 
   if (!user) return <p>You aren't logged in.</p>;
 
