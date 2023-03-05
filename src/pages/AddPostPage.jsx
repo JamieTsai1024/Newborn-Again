@@ -92,7 +92,13 @@ const AddPostPage = () => {
             <option className="hidden"></option>
             {Object.values(ConditionsEnum).map((condition) => (
               <option key={condition} value={condition}>
-                {condition.replaceAll("-", " ").toLowerCase()}
+                {condition
+                  .replaceAll("-", " ")
+                  .split(" ")
+                  .map((word) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                  })
+                  .join(" ")}
               </option>
             ))}
           </select>
@@ -114,7 +120,13 @@ const AddPostPage = () => {
             <option className="hidden"></option>
             {Object.values(CategoriesEnum).map((category) => (
               <option key={category} value={category}>
-                {category.replaceAll("-", " ").toLowerCase()}
+                {category
+                  .replaceAll("-", " ")
+                  .split(" ")
+                  .map((word) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                  })
+                  .join(" ")}
               </option>
             ))}
           </select>
@@ -147,7 +159,7 @@ const CategoriesEnum = [
   "toys",
   "books",
   "furniture",
-  "safetyGear",
+  "safety-gear",
   "other",
 ];
 
