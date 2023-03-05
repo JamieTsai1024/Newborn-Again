@@ -6,33 +6,6 @@ client.setEndpoint("http://localhost/v1").setProject("6403cc0462a92a2d3123");
 export const account = new Account(client);
 export const database = new Databases(client);
 
-export const getUserData = async () => {
-  try {
-    const account = new Account(client);
-    return account.get();
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
-// export const login = async (email, password) => {
-//   try {
-//     const account = new Account(client);
-//     return account.createEmailSession(email, password);
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };
-
-// export const signUp = async (email, password) => {
-//   try {
-//     const account = new Account(client);
-//     return account.create(ID.unique(), email, password);
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };
-
 // let api = {
 //   sdk: null,
 

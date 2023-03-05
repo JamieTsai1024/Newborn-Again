@@ -18,20 +18,23 @@ const SignUp = () => {
         .create(ID.unique(), user.email, user.password, user.name)
         .then(
           (response) => {
-            console.log("response!!", response);
+            console.log("response from handleSignUp create", response);
             navigate("/");
           },
           (error) => {
-            console.log("error!!", error);
+            console.log("errorfrom handleSignUp create", error);
           }
         );
       await account.createEmailSession(user.email, user.password).then(
         (response) => {
-          console.log("response createEmailSession!!", response);
+          console.log(
+            "response from handleSignUp createEmailSession",
+            response
+          );
           navigate("/");
         },
         (error) => {
-          console.log("error createEmailSession!!", error);
+          console.log("error from handleSignUp createEmailSession", error);
         }
       );
     } catch (e) {

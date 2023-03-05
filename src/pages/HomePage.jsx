@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 // import { Models } from "appwrite";
 import LandingPage from "./LandingPage";
 import MissionStatementPage from "./MissionStatement";
-import { account, getUserData } from "./../api/api";
+import { account } from "./../api/api";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -19,13 +19,7 @@ const HomePage = () => {
     console.log("hi again");
     account
       .get()
-      // getUserData()
-      .then(
-        (account) => setUser(account),
-        (error) => {
-          console.log("error in get", error);
-        }
-      )
+      .then((account) => setUser(account))
       .catch((error) => navigate("/login"));
   }, []);
 
