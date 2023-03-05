@@ -23,8 +23,10 @@ const AddPostPage = () => {
   const handleAddPost = async (e) => {
     e.preventDefault();
     try {
-      // console.log("user", user);
+      console.log("user", user);
       // await account.createEmailSession(user.email, user.password);
+      // await api.createSession(user.email, "happyhappy");
+      // await api.createSession(user.email, user.password);
       await api.createDocument(
         "6403d5d8bfa5e8fe29e1",
         "6403d600199676c85a34",
@@ -36,6 +38,14 @@ const AddPostPage = () => {
           Permission.write(Role.user(user["$id"])),
         ]
       );
+      // setPost({
+      //   name: "",
+      //   description: "",
+      //   condition: "",
+      //   location: "",
+      //   category: "",
+      //   userId: user.id,
+      // });
     } catch (e) {
       console.log(e);
     }
@@ -73,13 +83,19 @@ const AddPostPage = () => {
             autoComplete="description"
           />
           <label className="block mt-6">Condition</label>
-          <input
+          <select
             className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
-            type="text"
             onChange={(e) => setPost({ ...post, condition: e.target.value })}
             name="condition"
             autoComplete="condition"
-          />
+          >
+            <option className="hidden"></option>
+            {Object.values(ConditionsEnum).map((condition) => (
+              <option key={condition} value={condition}>
+                {condition.replaceAll("-", " ").toLowerCase()}
+              </option>
+            ))}
+          </select>
           <label className="block mt-6">Location</label>
           <input
             className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
@@ -89,13 +105,19 @@ const AddPostPage = () => {
             autoComplete="location"
           />
           <label className="block mt-6">Category</label>
-          <input
+          <select
             className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
-            type="text"
             onChange={(e) => setPost({ ...post, category: e.target.value })}
             name="category"
             autoComplete="category"
-          />
+          >
+            <option className="hidden"></option>
+            {Object.values(CategoriesEnum).map((category) => (
+              <option key={category} value={category}>
+                {category.replaceAll("-", " ").toLowerCase()}
+              </option>
+            ))}
+          </select>
 
           <div className="mt-6">
             <button
@@ -117,5 +139,15 @@ const AddPostPage = () => {
     </section>
   );
 };
+
+const ConditionsEnum = ["new", "gently-used", "used"];
+const CategoriesEnum = [
+  "clothing",
+  "toys",
+  "books",
+  "furniture",
+  "safetyGear",
+  "other",
+];
 
 export default AddPostPage;
