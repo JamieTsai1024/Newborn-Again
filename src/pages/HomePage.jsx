@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 // import { Models } from "appwrite";
 import BrowseByCategory from "./BrowseByCategory";
 import LandingPage from "./LandingPage";
-import Browse from "./Browse";
 import MissionStatementPage from "./MissionStatement";
 import { api } from "./../api/api";
 
@@ -45,7 +44,6 @@ const HomePage = () => {
       <LandingPage onScrollClick={scrollClickHandler} />
       <MissionStatementPage ref={missionStatementRef} />
       <BrowseByCategory />
-      <Browse />
     </>
   );
 };

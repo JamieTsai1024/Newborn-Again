@@ -2,7 +2,15 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { api } from "./../api/api";
 import { Permission, Role } from "appwrite";
-import { Server } from "../utils/config";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 
 const AddPostPage = () => {
   const navigate = useNavigate();
@@ -55,43 +63,50 @@ const AddPostPage = () => {
   }, []);
 
   return (
-    <section className="container h-screen mx-auto flex">
-      <div className="flex-grow flex flex-col max-w-xl justify-center p-6">
-        <form onSubmit={handleAddPost}>
-          <label className="block mt-6">Name</label>
-          <input
-            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
-            type="text"
+    <section className="login-container">
+      <form className="login-box" onSubmit={handleAddPost}>
+        <h2 className="welcome">Create Posting</h2>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+          }}
+        >
+          <TextField
+            id="name"
+            label="Name"
+            variant="outlined"
+            multiline
+            maxRows={4}
+            required
             onChange={(e) => setPost({ ...post, name: e.target.value })}
-            name="name"
-            autoComplete="name"
+            size="small"
+            fullWidth
           />
-          <label className="block mt-6">Description</label>
-          <input
-            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
-            type="text"
+          <TextField
+            id="description"
+            label="Description"
+            variant="outlined"
+            multiline
+            maxRows={4}
             onChange={(e) => setPost({ ...post, description: e.target.value })}
-            name="description"
-            autoComplete="description"
+            size="small"
+            fullWidth
           />
-          <label className="block mt-6">Image</label>
-          <input
-            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-            name="image"
-            autoComplete="image"
-          />
-          <label className="block mt-6">Condition</label>
-          <select
-            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
+
+          <TextField
+            id="condition"
+            select
+            label="Condition"
+            size="small"
+            required
+            defaultValue={""}
             onChange={(e) => setPost({ ...post, condition: e.target.value })}
-            name="condition"
-            autoComplete="condition"
+            fullWidth
           >
-            <option className="hidden"></option>
             {Object.values(ConditionsEnum).map((condition) => (
-              <option key={condition} value={condition}>
+              <MenuItem key={condition} value={condition}>
                 {condition
                   .replaceAll("-", " ")
                   .split(" ")
@@ -99,27 +114,31 @@ const AddPostPage = () => {
                     return word.charAt(0).toUpperCase() + word.slice(1);
                   })
                   .join(" ")}
-              </option>
+              </MenuItem>
             ))}
-          </select>
-          <label className="block mt-6">Location</label>
-          <input
-            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
-            type="text"
+          </TextField>
+          <TextField
+            id="location"
+            label="Location"
+            variant="outlined"
+            required
             onChange={(e) => setPost({ ...post, location: e.target.value })}
-            name="location"
-            autoComplete="location"
+            size="small"
+            fullWidth
           />
-          <label className="block mt-6">Category</label>
-          <select
-            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
+
+          <TextField
+            id="category"
+            select
+            label="Category"
+            size="small"
+            required
+            defaultValue={""}
             onChange={(e) => setPost({ ...post, category: e.target.value })}
-            name="category"
-            autoComplete="category"
+            fullWidth
           >
-            <option className="hidden"></option>
             {Object.values(CategoriesEnum).map((category) => (
-              <option key={category} value={category}>
+              <MenuItem key={category} value={category}>
                 {category
                   .replaceAll("-", " ")
                   .split(" ")
@@ -127,28 +146,23 @@ const AddPostPage = () => {
                     return word.charAt(0).toUpperCase() + word.slice(1);
                   })
                   .join(" ")}
-              </option>
+              </MenuItem>
             ))}
-          </select>
-
-          <div className="mt-6">
-            <button
-              type="submit"
-              disabled={
-                !post.name ||
-                !post.condition ||
-                !post.location ||
-                !post.category ||
-                !post.userId ||
-                !image
-              }
-              className="mx-auto mt-4 py-4 px-16 font-semibold rounded-lg shadow-md bg-gray-900 text-white border hover:border-gray-900 hover:text-gray-900 hover:bg-white focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Create Post
-            </button>
-          </div>
-        </form>
-      </div>
+          </TextField>
+          <Button
+            type="submit"
+            disabled={
+              !post.name ||
+              !post.condition ||
+              !post.location ||
+              !post.category ||
+              !post.userId
+            }
+          >
+            Create Post
+          </Button>
+        </Box>
+      </form>
     </section>
   );
 };
