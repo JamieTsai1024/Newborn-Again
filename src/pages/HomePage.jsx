@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 // import { Models } from "appwrite";
+import BrowseByCategory from "./BrowseByCategory";
 import LandingPage from "./LandingPage";
 import MissionStatementPage from "./MissionStatement";
 import { account } from "./../api/api";
 
-const HomePage = () => {
+const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
   const navigate = useNavigate();
+  // const { onScrollClick } = props;
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -31,10 +33,11 @@ const HomePage = () => {
 
   return (
     <>
-      <LandingPage />
-      <MissionStatementPage />
+      <LandingPage onScrollClick={onScrollClick} />
+      <MissionStatementPage ref={ref} />
+      <BrowseByCategory />
     </>
   );
-};
+});
 
 export default HomePage;
