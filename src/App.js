@@ -1,14 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
-import LandingPage from "./pages/LandingPage";
-import MissionStatement from "./pages/MissionStatement";
+import HomePage from "./pages/HomePage";
+import SignUp from "./pages/SignUp";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <LandingPage />
-      <MissionStatement />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
