@@ -1,4 +1,4 @@
-import { Client, Account, Databases, ID } from "appwrite";
+import { Client, Account, Databases, Storage, ID } from "appwrite";
 
 let api = {
   sdk: null,
@@ -11,9 +11,9 @@ let api = {
       .setProject("6403cc0462a92a2d3123");
     const account = new Account(client);
     const database = new Databases(client, "6403d5d8bfa5e8fe29e1");
-    // const database = new Databases(client);
+    const storage = new Storage(client);
 
-    api.sdk = { database, account };
+    api.sdk = { database, account, storage };
     return api.sdk;
   },
 
@@ -61,6 +61,26 @@ let api = {
       .provider()
       .database.deleteDocument(databaseId, collectionId, documentId);
   },
+
+  createFile: (bucketId, file) => {
+    return api.provider().storage.createFile(bucketId, ID.unique(), file);
+  },
+
+  // listFiles: (databaseId, collectionId) => {
+  //   return api.provider().database.listDocuments(databaseId, collectionId);
+  // },
+
+  // updateFile: (databaseId, collectionId, documentId, data) => {
+  //   return api
+  //     .provider()
+  //     .database.updateDocument(databaseId, collectionId, documentId, data);
+  // },
+
+  // deleteFile: (databaseId, collectionId, documentId) => {
+  //   return api
+  //     .provider()
+  //     .database.deleteDocument(databaseId, collectionId, documentId);
+  // },
 };
 
 export { api };

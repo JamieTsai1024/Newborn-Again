@@ -6,6 +6,7 @@ import { Server } from "../utils/config";
 
 const AddPostPage = () => {
   const navigate = useNavigate();
+  const [image, setImage] = useState();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -16,17 +17,17 @@ const AddPostPage = () => {
     description: "",
     condition: "",
     location: "",
+    image: "",
     category: "",
     userId: user.id,
   });
 
   const handleAddPost = async (e) => {
     e.preventDefault();
+    // TODO: later for anonymous sessions, use account.createAnonymousession(); https://youtu.be/DkchyIDef18?t=182
     try {
-      console.log("user", user);
-      // await account.createEmailSession(user.email, user.password);
-      // await api.createSession(user.email, "happyhappy");
-      // await api.createSession(user.email, user.password);
+      const newImage = await api.createFile("6404413ed6aa6c044fe7", image);
+      setPost({ ...post, image: newImage.$id });
       await api.createDocument(
         "6403d5d8bfa5e8fe29e1",
         "6403d600199676c85a34",
@@ -38,14 +39,7 @@ const AddPostPage = () => {
           Permission.write(Role.user(user["$id"])),
         ]
       );
-      // setPost({
-      //   name: "",
-      //   description: "",
-      //   condition: "",
-      //   location: "",
-      //   category: "",
-      //   userId: user.id,
-      // });
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
@@ -81,6 +75,14 @@ const AddPostPage = () => {
             onChange={(e) => setPost({ ...post, description: e.target.value })}
             name="description"
             autoComplete="description"
+          />
+          <label className="block mt-6">Image</label>
+          <input
+            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+            name="image"
+            autoComplete="image"
           />
           <label className="block mt-6">Condition</label>
           <select
@@ -127,7 +129,8 @@ const AddPostPage = () => {
                 !post.condition ||
                 !post.location ||
                 !post.category ||
-                !post.userId
+                !post.userId ||
+                !image
               }
               className="mx-auto mt-4 py-4 px-16 font-semibold rounded-lg shadow-md bg-gray-900 text-white border hover:border-gray-900 hover:text-gray-900 hover:bg-white focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
             >
