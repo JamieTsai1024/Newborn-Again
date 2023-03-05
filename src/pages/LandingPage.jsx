@@ -2,7 +2,7 @@ import { Box, Button, IconButton, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 
-const LandingPage = () => {
+const LandingPage = ({ onScrollClick }) => {
   return (
     <Box
       sx={{
@@ -20,12 +20,19 @@ const LandingPage = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h1">Tiny Treads</Typography>
+        <Typography variant="h1" sx={{ fontWeight: "bold" }}>
+          Tiny Treads
+        </Typography>
         <Typography variant="h4">blah blah blah text</Typography>
         <Button
           variant="contained"
           size="large"
-          sx={{ borderRadius: "16px", my: "20px" }}
+          sx={{
+            borderRadius: "20px",
+            mt: "60px",
+            fontSize: "30px",
+            textTransform: "none",
+          }}
         >
           Start Browsing
         </Button>
@@ -33,6 +40,7 @@ const LandingPage = () => {
           aria-label="continue"
           size="small"
           sx={{ position: "absolute", bottom: 30 }}
+          onClick={onScrollClick}
         >
           <ExpandMoreIcon style={{ fontSize: "60px" }} />
         </IconButton>
