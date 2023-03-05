@@ -3,6 +3,7 @@ import "./App.css";
 import React from "react";
 import HomePage from "./pages/HomePage";
 import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const theme = createTheme({
@@ -30,6 +31,7 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

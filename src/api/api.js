@@ -1,5 +1,4 @@
-import { Client, Account, Databases } from "appwrite";
-// import { Client, Account, Databases, ID } from "appwrite";
+import { Client, Account, Databases, ID } from "appwrite";
 
 const client = new Client();
 client.setEndpoint("http://localhost/v1").setProject("6403cc0462a92a2d3123");
