@@ -1,9 +1,11 @@
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, Button, IconButton, Typography, AppBar, Toolbar, Link } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 
+
 const LandingPage = ({ onScrollClick }) => {
-  return (
+  return (    
+    
     <Box
       sx={{
         width: "100%",
@@ -11,8 +13,12 @@ const LandingPage = ({ onScrollClick }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        backgroundImage: `url("/images/test.png")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
       }}
     >
+
       <Box
         sx={{
           display: "flex",
@@ -20,21 +26,31 @@ const LandingPage = ({ onScrollClick }) => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h1" sx={{ fontWeight: "bold" }}>
-          Tiny Treads
+        <Typography variant="h1" sx={{ fontWeight: "bold", marginBottom: "30px" }}>
+          Newborn Again
         </Typography>
-        <Typography variant="h4">blah blah blah text</Typography>
-        <Button
+        <Typography variant="h4" sx={{width: "70%", textAlign: "center"}}>A site for past, current, and future mothers to lend a hand to one another through donations.</Typography>
+        <Button 
+          href="/browse"
           variant="contained"
           size="large"
           sx={{
-            borderRadius: "20px",
-            mt: "60px",
-            fontSize: "30px",
+            borderRadius: "10px",
+            mt: "100px",
+            fontSize: "25px",
             textTransform: "none",
-          }}
+            backgroundColor: "#E3E9FC",
+            border: "solid 2px black",
+            color: "black",
+            boxShadow: "none",
+            ":hover": {
+              bgcolor: "#A8D0E5",
+              border: "solid 2px #A8D0E5",
+              color: "white",
+              boxShadow: "none",
+          }}}
         >
-          Start Browsing
+          START BROWSING
         </Button>
         <IconButton
           aria-label="continue"
@@ -42,10 +58,11 @@ const LandingPage = ({ onScrollClick }) => {
           sx={{ position: "absolute", bottom: 30 }}
           onClick={onScrollClick}
         >
-          <ExpandMoreIcon style={{ fontSize: "60px" }} />
+          <ExpandMoreIcon style={{ fontSize: "60px"}} />
         </IconButton>
       </Box>
     </Box>
+    
   );
 };
 

@@ -51,16 +51,16 @@ const AddPostPage = () => {
     }
   };
 
-  useEffect(() => {
-    api
-      .provider()
-      .account.get()
-      .then((account) => {
-        setPost({ ...post, userId: account.$id });
-        setUser(account);
-      })
-      .catch((error) => navigate("/login"));
-  }, []);
+  // useEffect(() => {
+  //   api
+  //     .provider()
+  //     .account.get()
+  //     .then((account) => {
+  //       setPost({ ...post, userId: account.$id });
+  //       setUser(account);
+  //     })
+  //     .catch((error) => navigate("/login"));
+  // }, []);
 
   return (
     <section className="container h-screen mx-auto flex">
@@ -140,13 +140,13 @@ const AddPostPage = () => {
   );
 };
 
-const ConditionsEnum = ["new", "gently-used", "used"];
+const ConditionsEnum = ["new", "gently used", "used"];
 const CategoriesEnum = [
   "clothing",
   "toys",
   "books",
   "furniture",
-  "safetyGear",
+  "safety gear",
   "other",
 ];
 

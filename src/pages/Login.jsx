@@ -67,12 +67,12 @@ const Login = () => {
           sx={{
             justifyContent: "center", 
             alignItems: "center", 
-            backgroundColor: "#FCB9C0",
+            backgroundColor: "#ebabbf",
             borderRadius: "20px",
             margin: "20px 5px",
             color: "white",
             ":hover": {
-              bgcolor: "#DBC6FA",
+              bgcolor: "#89b9d3",
               color: "white"
           }}}
         >
