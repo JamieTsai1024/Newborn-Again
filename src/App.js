@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Browse from "./pages/Browse";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProductPage from "./pages/ProductPage";
 import AddPostPage from "./pages/AddPostPage";
 
 const theme = createTheme({
@@ -13,29 +14,17 @@ const theme = createTheme({
 });
 
 function App() {
-  const scrollClickHandler = () => {
-    missionStatementRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const missionStatementRef = React.createRef();
-
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                onScrollClick={scrollClickHandler}
-                ref={missionStatementRef}
-              />
-            }
-          />
+          <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/explore" element={<Browse />} />
+          <Route path="/product" element={<ProductPage />} />
           <Route path="/posting" element={<AddPostPage />} />
+          <Route path="/browse" element={<Browse />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

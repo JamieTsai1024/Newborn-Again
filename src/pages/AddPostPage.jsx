@@ -14,6 +14,7 @@ import {
 
 const AddPostPage = () => {
   const navigate = useNavigate();
+  const [image, setImage] = useState();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -24,52 +25,42 @@ const AddPostPage = () => {
     description: "",
     condition: "",
     location: "",
+    image: "",
     category: "",
     userId: user.id,
   });
 
   const handleAddPost = async (e) => {
     e.preventDefault();
+    // TODO: later for anonymous sessions, use account.createAnonymousession(); https://youtu.be/DkchyIDef18?t=182
     try {
-      console.log("user", user);
-      // await account.createEmailSession(user.email, user.password);
-      // await api.createSession(user.email, "happyhappy");
-      // await api.createSession(user.email, user.password);
+      const newImage = await api.createFile("6404413ed6aa6c044fe7", image);
       await api.createDocument(
         "6403d5d8bfa5e8fe29e1",
         "6403d600199676c85a34",
         //   Server.databaseID,
         //   Server.collectionID,
-        post,
+        { ...post, image: newImage.$id },
         [
           Permission.read(Role.user(user["$id"])),
           Permission.write(Role.user(user["$id"])),
         ]
       );
-      // setPost({
-      //   name: "",
-      //   description: "",
-      //   condition: "",
-      //   location: "",
-      //   category: "",
-      //   userId: user.id,
-      // });
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
   };
 
-  // useEffect(() => {
-  //   api
-  //     .provider()
-  //     .account.get()
-  //     .then((account) => {
-  //       setPost({ ...post, userId: account.$id });
-  //       setUser(account);
-  //     })
-  //     .catch((error) => navigate("/login"));
-  // }, []);
-  console.log(post);
+  useEffect(() => {
+    api
+      .getAccount()
+      .then((account) => {
+        setPost({ ...post, userId: account.$id });
+        setUser(account);
+      })
+      .catch((error) => navigate("/login"));
+  }, []);
 
   return (
     <section className="login-container">
