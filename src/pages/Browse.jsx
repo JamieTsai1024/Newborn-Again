@@ -1,9 +1,10 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import {Button, Grid, } from "@mui/material";
+import {Button, Grid, Box,} from "@mui/material";
 
 import "./Browse.css";
 import { grey } from "@mui/material/colors";
+import cat from "./cat.jpg";
 
 
 function CategoryButton(props) {
@@ -43,7 +44,15 @@ class Browse extends React.Component {
     displayItems(numItems) {
         let content = []
         for (let i = 0; i < numItems; i++) {
-            content.push(<Grid item xs={1} style={{background: "red"}}> {i} </Grid>);
+            content.push(
+            <Grid item xs={1}>
+                <Box>
+                    <img className="itemImg" src={cat} alt="Logo"/>
+                    <h4 style={{margin: "7px 0px"}}>CUTE CAT</h4>
+                    <p style={{margin: "0px 0px 15px 0px"}}>descriptoin descitooin blah blah</p>
+                </Box>
+            </Grid>
+            );
             console.log(i);
         }
         return content;
@@ -113,7 +122,7 @@ class Browse extends React.Component {
 
                         </Grid> */}
 
-                        <Grid container spacing={2} columns={4}>
+                        <Grid container spacing={3} columns={4}>
                             {this.displayItems(10)}
                         </Grid>
                         

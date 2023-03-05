@@ -4,13 +4,13 @@ import React from "react";
 import HomePage from "./pages/HomePage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Browse from "./pages/Browse";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddPostPage from "./pages/AddPostPage";
 
 const theme = createTheme({
   typography: { fontFamily: "Nunito, sans-serif" },
 });
-import Browse from "./pages/Browse";
 
 
 function App() {

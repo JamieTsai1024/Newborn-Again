@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 // import { Models } from "appwrite";
 import BrowseByCategory from "./BrowseByCategory";
 import LandingPage from "./LandingPage";
+import Browse from "./Browse";
 import MissionStatementPage from "./MissionStatement";
 import { api } from "./../api/api";
 
@@ -18,14 +19,13 @@ const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
   // const [user, setUser] = useState<Models.Account<Models.Preferences>>();
 
   // TODO: comment to not kick out unlogged in users - do we want unauthed users?
-  useEffect(() => {
-    // account
-    api
-      .provider()
-      .account.get()
-      .then((account) => setUser(account))
-      .catch((error) => navigate("/login"));
-  }, []);
+  // useEffect(() => {
+  //   console.log("hi again");
+  //   account
+  //     .get()
+  //     .then((account) => setUser(account))
+  //     .catch((error) => navigate("/login"));
+  // }, []);
 
   const handleLogOut = async () =>
     await api
@@ -40,6 +40,7 @@ const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
       <LandingPage onScrollClick={onScrollClick} />
       <MissionStatementPage ref={ref} />
       <BrowseByCategory />
+      <Browse />
     </>
   );
 });
