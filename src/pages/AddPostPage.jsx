@@ -27,7 +27,7 @@ const AddPostPage = () => {
     // TODO: later for anonymous sessions, use account.createAnonymousession(); https://youtu.be/DkchyIDef18?t=182
     try {
       const newImage = await api.createFile("6404413ed6aa6c044fe7", image);
-      setPost({ ...post, image: newImage.$id });
+      await setPost({ ...post, image: newImage.$id });
       await api.createDocument(
         "6403d5d8bfa5e8fe29e1",
         "6403d600199676c85a34",
@@ -47,8 +47,7 @@ const AddPostPage = () => {
 
   useEffect(() => {
     api
-      .provider()
-      .account.get()
+      .getAccount()
       .then((account) => {
         setPost({ ...post, userId: account.$id });
         setUser(account);

@@ -22,8 +22,7 @@ let api = {
   },
 
   getAccount: () => {
-    let account = api.provider().account;
-    return account.get();
+    return api.provider().account.get();
   },
 
   createSession: (email, password) => {
@@ -64,6 +63,14 @@ let api = {
 
   createFile: (bucketId, file) => {
     return api.provider().storage.createFile(bucketId, ID.unique(), file);
+  },
+
+  getFileById: (bucketId, fileId) => {
+    return api.provider().storage.getFile(bucketId, fileId);
+  },
+
+  getFilePreview: (bucketId, fileId) => {
+    return api.provider().storage.getFilePreview(bucketId, fileId);
   },
 
   // listFiles: (databaseId, collectionId) => {
