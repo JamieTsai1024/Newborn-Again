@@ -2,15 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { api } from "./../api/api";
 import { Permission, Role } from "appwrite";
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Box, Button, MenuItem, TextField } from "@mui/material";
 
 const AddPostPage = () => {
   const navigate = useNavigate();
@@ -35,6 +27,7 @@ const AddPostPage = () => {
     // TODO: later for anonymous sessions, use account.createAnonymousession(); https://youtu.be/DkchyIDef18?t=182
     try {
       const newImage = await api.createFile("6404413ed6aa6c044fe7", image);
+      console.log("post", post, newImage.$id);
       await api.createDocument(
         "6403d5d8bfa5e8fe29e1",
         "6403d600199676c85a34",
@@ -46,7 +39,7 @@ const AddPostPage = () => {
           Permission.write(Role.user(user["$id"])),
         ]
       );
-      navigate("/");
+      navigate("/browse");
     } catch (e) {
       console.log(e);
     }
@@ -75,14 +68,15 @@ const AddPostPage = () => {
         >
           <TextField
             id="name"
-            label="Name"
+            sx={{ width: "35ch" }}
+            label="Item"
             variant="outlined"
             multiline
             maxRows={4}
             required
             onChange={(e) => setPost({ ...post, name: e.target.value })}
             size="small"
-            fullWidth
+            fullwidth="true"
           />
           <TextField
             id="description"
@@ -92,9 +86,8 @@ const AddPostPage = () => {
             maxRows={4}
             onChange={(e) => setPost({ ...post, description: e.target.value })}
             size="small"
-            fullWidth
+            fullwidth="true"
           />
-
           <TextField
             id="condition"
             select
@@ -103,11 +96,17 @@ const AddPostPage = () => {
             required
             defaultValue={""}
             onChange={(e) => setPost({ ...post, condition: e.target.value })}
-            fullWidth
+            fullwidth="true"
           >
             {Object.values(ConditionsEnum).map((condition) => (
               <MenuItem key={condition} value={condition}>
-                {condition.replaceAll("-", " ").toLowerCase()}
+                {condition
+                  .replaceAll("-", " ")
+                  .split(" ")
+                  .map((word) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                  })
+                  .join(" ")}
               </MenuItem>
             ))}
           </TextField>
@@ -118,7 +117,7 @@ const AddPostPage = () => {
             required
             onChange={(e) => setPost({ ...post, location: e.target.value })}
             size="small"
-            fullWidth
+            fullwidth="true"
           />
 
           <TextField
@@ -129,14 +128,94 @@ const AddPostPage = () => {
             required
             defaultValue={""}
             onChange={(e) => setPost({ ...post, category: e.target.value })}
-            fullWidth
+            fullwidth="true"
           >
             {Object.values(CategoriesEnum).map((category) => (
               <MenuItem key={category} value={category}>
-                {category.replaceAll("-", " ").toLowerCase()}
+                {category
+                  .replaceAll("-", " ")
+                  .split(" ")
+                  .map((word) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                  })
+                  .join(" ")}
               </MenuItem>
             ))}
           </TextField>
+          {/* <Button
+            variant="raised"
+            component="span"
+            style={{ textTransform: "none" }}
+            fullWidth
+          >
+            <input
+              style={{ display: "none" }}
+              id="condition"
+              multiple
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])}
+              required
+            />
+            Upload Picture
+          </Button> */}
+
+          {/* <Button
+            variant="raised"
+            component="span"
+            style={{ textTransform: "none" }}
+            fullWidth
+          >
+            Upload Picture
+            <input
+              // style={{ display: "none" }}
+              id="condition"
+              type="file"
+              hidden
+              onChange={(e) => setImage(e.target.files[0])}
+              size="small"
+              required
+            />
+          </Button> */}
+
+          {/* <label for="condition">
+            <input
+              id="condition"
+              style={{ display: "none" }}
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])}
+              label="Condition"
+              name="image"
+              size="small"
+              autoComplete="image"
+              required
+            />
+            <Button
+              variant="raised"
+              component="span"
+              style={{ textTransform: "none" }}
+              fullWidth
+            >
+              Upload Picture
+            </Button>
+          </label> */}
+
+          <Button variant="raised" component="label">
+            Upload File
+            <input
+              type="file"
+              hidden
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+          </Button>
+
+          {/* <label class="custom-file-upload">
+            <input
+              type="file"
+              // hidden
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+          </label> */}
+
           <Button
             type="submit"
             disabled={
@@ -155,13 +234,13 @@ const AddPostPage = () => {
   );
 };
 
-const ConditionsEnum = ["new", "gently used", "used"];
+const ConditionsEnum = ["new", "gently-used", "used"];
 const CategoriesEnum = [
   "clothing",
   "toys",
   "books",
   "furniture",
-  "safety gear",
+  "safety-gear",
   "other",
 ];
 

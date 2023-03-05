@@ -1,13 +1,16 @@
+button {
+    font-family: 'Nunito', sans-serif;
+    background-color: inherit;
+}
+
 .buttonUnclicked {
     font-size: large;
-    background-color: white;
     text-align: left;
     border: none;
   }
   
 .buttonClicked{
     font-size: large;
-    background-color: white;
     text-align: left;
     border: none;
     border-bottom: solid 1px;
@@ -28,3 +31,10 @@
 .itemImg {
     max-width:100%;
 }
+
+.browse-container{
+    padding-top: 50px;
+    background-color: #C6E2E9;
+    height: 100vh;
+}
+
