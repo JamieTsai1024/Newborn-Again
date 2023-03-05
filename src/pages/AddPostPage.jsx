@@ -176,7 +176,7 @@ const AddPostPage = () => {
   );
 };
 
-const ConditionsEnum = ["new", "gently-used", "used"];
+const ConditionsEnum = ["new", "gently used", "used"];
 const CategoriesEnum = [
   "clothing",
   "toys",

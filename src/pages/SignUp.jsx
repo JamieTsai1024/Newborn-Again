@@ -92,12 +92,12 @@ const SignUp = () => {
           sx={{
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#FCB9C0",
+            backgroundColor: "#F3C0D0",
             borderRadius: "20px",
             margin: "20px 5px",
             color: "white",
             ":hover": {
-              bgcolor: "#DBC6FA",
+              bgcolor: "#89b9d3",
               color: "white",
             },
           }}
