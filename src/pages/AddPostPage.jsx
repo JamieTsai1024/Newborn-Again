@@ -27,13 +27,12 @@ const AddPostPage = () => {
     // TODO: later for anonymous sessions, use account.createAnonymousession(); https://youtu.be/DkchyIDef18?t=182
     try {
       const newImage = await api.createFile("6404413ed6aa6c044fe7", image);
-      await setPost({ ...post, image: newImage.$id });
       await api.createDocument(
         "6403d5d8bfa5e8fe29e1",
         "6403d600199676c85a34",
         //   Server.databaseID,
         //   Server.collectionID,
-        post,
+        { ...post, image: newImage.$id },
         [
           Permission.read(Role.user(user["$id"])),
           Permission.write(Role.user(user["$id"])),
