@@ -7,7 +7,12 @@ import Browse from "./Browse";
 import MissionStatementPage from "./MissionStatement";
 import { api } from "./../api/api";
 
-const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
+const HomePage = () => {
+  const scrollClickHandler = () => {
+    missionStatementRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const missionStatementRef = React.createRef();
   const navigate = useNavigate();
   // const { onScrollClick } = props;
   const [user, setUser] = useState({
@@ -37,12 +42,12 @@ const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
 
   return (
     <>
-      <LandingPage onScrollClick={onScrollClick} />
-      <MissionStatementPage ref={ref} />
+      <LandingPage onScrollClick={scrollClickHandler} />
+      <MissionStatementPage ref={missionStatementRef} />
       <BrowseByCategory />
       <Browse />
     </>
   );
-});
+};
 
 export default HomePage;
