@@ -24,3 +24,7 @@
 .ButtonWrapper {
     text-align: left;
 }
+
+.itemImg {
+    max-width:100%;
+}
