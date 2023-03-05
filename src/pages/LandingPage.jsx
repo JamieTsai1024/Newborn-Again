@@ -1,11 +1,12 @@
 import { Box, Button, IconButton, Typography, AppBar, Toolbar, Link } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
+import { useNavigate } from "react-router";
 
 
 const LandingPage = ({ onScrollClick }) => {
-  return (    
-    
+  const navigate = useNavigate();
+  return (
     <Box
       sx={{
         width: "100%",
@@ -48,7 +49,8 @@ const LandingPage = ({ onScrollClick }) => {
               border: "solid 2px #A8D0E5",
               color: "white",
               boxShadow: "none",
-          }}}
+          }}
+          onClick={() => navigate("/browse")}
         >
           START BROWSING
         </Button>
