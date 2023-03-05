@@ -3,13 +3,10 @@ import React, { useEffect, useState } from "react";
 import { api } from "./../api/api";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
+import ProductTile from "../components/ProductTile";
 
 const ProductPage = () => {
-  // if (!selectedPostId) return
-  // const { id } = useParams();
-  const postId = "64047f6bc29e840ed1a2";
-  // let { postId } = useParams();
-  // console.log("postId", postId);
+  const postId = "6404b5ff7a27c5785647";
   const navigate = useNavigate();
   const [post, setPost] = useState({
     name: "",
@@ -50,14 +47,20 @@ const ProductPage = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        width: "100vw",
+        width: "vw",
+        my: "50px",
       }}
     >
       <Breadcrumbs>ProductPage</Breadcrumbs>
       <Box sx={{ display: "flex", width: "80%", my: "100px" }}>
         {post.image && (
           <img
-            style={{ width: "30%", objectFit: "cover", borderRadius: "15px" }}
+            style={{
+              width: "30%",
+              objectFit: "cover",
+              borderRadius: "15px",
+              boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
+            }}
             src={api.getFilePreview("6404413ed6aa6c044fe7", post.image)}
             alt={api.getFileById("6404413ed6aa6c044fe7", post.image).fileName}
           />
@@ -67,7 +70,8 @@ const ProductPage = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            ml: "50px",
+            ml: "90px",
+            width: "100%",
           }}
         >
           <Box
@@ -93,36 +97,46 @@ const ProductPage = () => {
                   <Typography variant="h6">Location</Typography>
                   <Typography variant="h6">Condition</Typography>
                 </Box>
-                <Box sx={{ ml: "40px", color: "dimgray" }}>
+                <Box sx={{ ml: "20px", color: "dimgray" }}>
                   <Typography variant="h6">{post.location}</Typography>
-                  <Typography variant="h6">{post.condition}</Typography>
+                  <Typography variant="h6">
+                    {post.condition
+                      .replaceAll("-", " ")
+                      .split(" ")
+                      .map((word) => {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                      })
+                      .join(" ")}
+                  </Typography>
                 </Box>
               </Box>
             </Box>
-            {/* <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                width: "50%",
-                borderRadius: "15px",
-                border: "solid 1px black",
-                pl: "10px",
-              }}
-            >
-              <Typography variant="h3" gutterBottom>
-                Contact Information
-              </Typography>
-              <Box sx={{ display: "flex", mb: "20px" }}>
-                <Box>
-                  <Typography variant="h6">Phone Number</Typography>
-                  <Typography variant="h6">Email</Typography>
-                </Box>
-                <Box sx={{ ml: "40px", color: "dimgray" }}>
-                  <Typography variant="h6">1234567890</Typography>
-                  <Typography variant="h6">email@email.com</Typography>
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  borderRadius: "15px",
+                  border: "solid 1px black",
+                  p: "20px",
+                }}
+              >
+                <Typography variant="h4" gutterBottom>
+                  Contact Information
+                </Typography>
+                <Box sx={{ display: "flex", mb: "20px" }}>
+                  <Box>
+                    <Typography variant="h6">Phone Number</Typography>
+                    <Typography variant="h6">Email</Typography>
+                  </Box>
+                  <Box sx={{ ml: "40px", color: "dimgray" }}>
+                    <Typography variant="h6">1234567890</Typography>
+                    <Typography variant="h6">cozybaby@gmail.com</Typography>
+                  </Box>
                 </Box>
               </Box>
-            </Box> */}
+            </Box>
           </Box>
           <Typography variant="h4" gutterBottom>
             Description
@@ -150,21 +164,11 @@ const ProductPage = () => {
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {featuredPosts &&
             featuredPosts
-              .slice(0, Math.max(4, featuredPosts.length))
+              .slice(0, Math.min(4, featuredPosts.length))
               .map((post, i) => (
-                <img
-                  key={i}
-                  src={api.getFilePreview("6404413ed6aa6c044fe7", post.image)}
-                  alt={
-                    api.getFileById("6404413ed6aa6c044fe7", post.image).fileName
-                  }
-                  style={{
-                    width: "23%",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "15px",
-                  }}
-                />
+                <Box sx={{ width: "23%" }}>
+                  <ProductTile post={post} key={i} />
+                </Box>
               ))}
         </Box>
       </Box>

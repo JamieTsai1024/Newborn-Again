@@ -27,6 +27,7 @@ const AddPostPage = () => {
     // TODO: later for anonymous sessions, use account.createAnonymousession(); https://youtu.be/DkchyIDef18?t=182
     try {
       const newImage = await api.createFile("6404413ed6aa6c044fe7", image);
+      console.log("post", post, newImage.$id);
       await api.createDocument(
         "6403d5d8bfa5e8fe29e1",
         "6403d600199676c85a34",
@@ -67,7 +68,8 @@ const AddPostPage = () => {
         >
           <TextField
             id="name"
-            label="Name"
+            sx={{ width: "35ch" }}
+            label="Item"
             variant="outlined"
             multiline
             maxRows={4}
@@ -140,15 +142,53 @@ const AddPostPage = () => {
               </MenuItem>
             ))}
           </TextField>
-          <input
-            style={{ display: "none" }}
-            id="condition"
-            multiple
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-            required
-          />
-          <label htmlFor="condition">
+          {/* <Button
+            variant="raised"
+            component="span"
+            style={{ textTransform: "none" }}
+            fullWidth
+          >
+            <input
+              style={{ display: "none" }}
+              id="condition"
+              multiple
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])}
+              required
+            />
+            Upload Picture
+          </Button> */}
+
+          {/* <Button
+            variant="raised"
+            component="span"
+            style={{ textTransform: "none" }}
+            fullWidth
+          >
+            Upload Picture
+            <input
+              // style={{ display: "none" }}
+              id="condition"
+              type="file"
+              hidden
+              onChange={(e) => setImage(e.target.files[0])}
+              size="small"
+              required
+            />
+          </Button> */}
+
+          {/* <label for="condition">
+            <input
+              id="condition"
+              style={{ display: "none" }}
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])}
+              label="Condition"
+              name="image"
+              size="small"
+              autoComplete="image"
+              required
+            />
             <Button
               variant="raised"
               component="span"
@@ -157,7 +197,25 @@ const AddPostPage = () => {
             >
               Upload Picture
             </Button>
-          </label>
+          </label> */}
+
+          <Button variant="raised" component="label">
+            Upload File
+            <input
+              type="file"
+              hidden
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+          </Button>
+
+          {/* <label class="custom-file-upload">
+            <input
+              type="file"
+              // hidden
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+          </label> */}
+
           <Button
             type="submit"
             disabled={
@@ -176,7 +234,7 @@ const AddPostPage = () => {
   );
 };
 
-const ConditionsEnum = ["new", "gently used", "used"];
+const ConditionsEnum = ["new", "gently-used", "used"];
 const CategoriesEnum = [
   "clothing",
   "toys",
