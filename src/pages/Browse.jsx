@@ -25,23 +25,13 @@ const Browse = () => {
   };
 
   const [posts, setPosts] = useState();
-  // const [images, setImages] = useState();
 
   useEffect(() => {
     api
       .listDocuments("6403d5d8bfa5e8fe29e1", "6403d600199676c85a34")
       .then((documents) => {
         setPosts(documents.documents);
-        // setImages(
-        //   documents.documents.map(
-        //     async (document) =>
-        //       await api.getFileById("6404413ed6aa6c044fe7", document.image)
-        //   )
-        // );
-        console.log("dov", documents.documents);
       });
-    console.log("posts", posts);
-    // .catch((error) => navigate("/login"));
   }, []);
 
   return (
