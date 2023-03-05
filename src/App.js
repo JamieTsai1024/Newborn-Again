@@ -1,9 +1,9 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import "./App.css";
-import BrowseByCategory from "./pages/BrowseByCategory";
-import LandingPage from "./pages/LandingPage";
-import MissionStatement from "./pages/MissionStatement";
 import React from "react";
+import HomePage from "./pages/HomePage";
+import SignUp from "./pages/SignUp";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const theme = createTheme({
   typography: { fontFamily: "Nunito, sans-serif" },
@@ -18,11 +18,20 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <LandingPage onScrollClick={scrollClickHandler} />
-        <MissionStatement ref={missionStatementRef} />
-        <BrowseByCategory />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onScrollClick={scrollClickHandler}
+                ref={missionStatementRef}
+              />
+            }
+          />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

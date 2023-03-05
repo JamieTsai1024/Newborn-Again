@@ -39,6 +39,7 @@ const BrowseByCategory = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        pb: "100px",
       }}
     >
       <Typography variant="h2" sx={{ fontWeight: 500, py: "60px" }}>
