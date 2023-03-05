@@ -10,6 +10,8 @@ import AddPostPage from "./pages/AddPostPage";
 const theme = createTheme({
   typography: { fontFamily: "Nunito, sans-serif" },
 });
+import Browse from "./pages/Browse";
+
 
 function App() {
   const scrollClickHandler = () => {

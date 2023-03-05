@@ -1,0 +1,26 @@
+.buttonUnclicked {
+    font-size: large;
+    background-color: white;
+    text-align: left;
+    border: none;
+  }
+  
+.buttonClicked{
+    font-size: large;
+    background-color: white;
+    text-align: left;
+    border: none;
+    border-bottom: solid 1px;
+}
+
+.Categories {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+}
+
+.ButtonWrapper {
+    text-align: left;
+}
