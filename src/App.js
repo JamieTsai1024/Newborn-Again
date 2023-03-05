@@ -12,7 +12,6 @@ const theme = createTheme({
   typography: { fontFamily: "Nunito, sans-serif" },
 });
 
-
 function App() {
   const scrollClickHandler = () => {
     missionStatementRef.current.scrollIntoView({ behavior: "smooth" });
@@ -35,6 +34,7 @@ function App() {
           />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/explore" element={<Browse />} />
           <Route path="/posting" element={<AddPostPage />} />
         </Routes>
       </BrowserRouter>

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 // import { Models } from "appwrite";
 import BrowseByCategory from "./BrowseByCategory";
 import LandingPage from "./LandingPage";
-import Browse from "./Browse";
 import MissionStatementPage from "./MissionStatement";
 import { api } from "./../api/api";
 
@@ -40,7 +39,6 @@ const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
       <LandingPage onScrollClick={onScrollClick} />
       <MissionStatementPage ref={ref} />
       <BrowseByCategory />
-      <Browse />
     </>
   );
 });
