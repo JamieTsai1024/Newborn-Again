@@ -49,6 +49,12 @@ let api = {
     return api.provider().database.listDocuments(databaseId, collectionId);
   },
 
+  getDocumentById: (databaseId, collectionId, documentId) => {
+    return api
+      .provider()
+      .database.getDocument(databaseId, collectionId, documentId);
+  },
+
   updateDocument: (databaseId, collectionId, documentId, data) => {
     return api
       .provider()

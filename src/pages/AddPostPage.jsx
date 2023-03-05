@@ -38,7 +38,7 @@ const AddPostPage = () => {
           Permission.write(Role.user(user["$id"])),
         ]
       );
-      navigate("/");
+      navigate("/browse");
     } catch (e) {
       console.log(e);
     }

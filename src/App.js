@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import HomePage from "./pages/HomePage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -14,6 +14,8 @@ const theme = createTheme({
 });
 
 function App() {
+  // const { selectedPostId, setSelectedPostId } = useState("");
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
@@ -22,8 +24,15 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/product" element={<ProductPage />} />
+          {/* <Route path="/product">
+            <Route path="=:postId" element={<ProductPage />} />
+          </Route> */}
           <Route path="/posting" element={<AddPostPage />} />
-          <Route path="/browse" element={<Browse />} />
+          <Route
+            path="/browse"
+            element={<Browse />}
+            // element={<Browse setSelectedPostId={setSelectedPostId} />}
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

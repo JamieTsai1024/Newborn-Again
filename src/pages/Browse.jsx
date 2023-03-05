@@ -1,11 +1,14 @@
 import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { Grid, Box } from "@mui/material";
 import "./Browse.css";
 import cat from "./cat.jpg";
 import { api } from "../api/api";
 
 const Browse = () => {
+  const navigate = useNavigate();
+
   const { allClick, setAllClick } = useState(false);
   const { clothesClick, setClothesClick } = useState(false);
   const { toysClick, setToysClick } = useState(false);
@@ -121,7 +124,16 @@ const Browse = () => {
           ) : (
             <Grid container spacing={3} columns={4}>
               {posts.map((post) => (
-                <Grid item xs={1} key={post.$id}>
+                <Grid
+                  item
+                  xs={1}
+                  key={post.$id}
+                  onClick={() => {
+                    // setSeletectedPostId(post.$id);
+                    navigate("/product");
+                    // navigate(`/product=${post.$id}`);
+                  }}
+                >
                   <Box>
                     {post.image && (
                       <img
