@@ -2,35 +2,6 @@ import { Grid, Typography, Box } from "@mui/material";
 import React from "react";
 import Category from "../components/Category";
 
-const categories = [
-  {
-    title: "Clothes",
-    src: "/images/baby-clothes.jpg",
-    altText: "Baby clothes",
-  },
-  {
-    title: "Toys",
-    src: "/images/baby-with-toys.jpg",
-    altText: "Baby playing with toys",
-  },
-  {
-    title: "Books",
-    src: "/images/baby-reading-book.jpg",
-    altText: "Baby reading a book",
-  },
-  { title: "Furniture", src: "/images/crib.jpg", altText: "Baby crib" },
-  {
-    title: "Safety Gear",
-    src: "/images/baby-in-car-seat.jpg",
-    altText: "Baby in a car seat",
-  },
-  {
-    title: "Other",
-    src: "/images/three-pink-balloons.jpg",
-    altText: "Three pink balloons",
-  },
-];
-
 const BrowseByCategory = () => {
   return (
     <Box
@@ -59,5 +30,34 @@ const BrowseByCategory = () => {
     </Box>
   );
 };
+
+const categories = [
+  {
+    title: "Clothes",
+    src: "/images/baby-clothes.jpg",
+    altText: "Baby clothes",
+  },
+  {
+    title: "Toys",
+    src: "/images/baby-with-toys.jpg",
+    altText: "Baby playing with toys",
+  },
+  {
+    title: "Books",
+    src: "/images/baby-reading-book.jpg",
+    altText: "Baby reading a book",
+  },
+  { title: "Furniture", src: "/images/crib.jpg", altText: "Baby crib" },
+  {
+    title: "Safety Gear",
+    src: "/images/baby-in-car-seat.jpg",
+    altText: "Baby in a car seat",
+  },
+  {
+    title: "Other",
+    src: "/images/three-pink-balloons.jpg",
+    altText: "Three pink balloons",
+  },
+];
 
 export default BrowseByCategory;

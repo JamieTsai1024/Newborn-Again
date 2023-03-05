@@ -19,7 +19,6 @@ const HomePage = React.forwardRef(({ onScrollClick }, ref) => {
 
   // TODO: comment to not kick out unlogged in users - do we want unauthed users?
   useEffect(() => {
-    console.log("hi again");
     account
       .get()
       .then((account) => setUser(account))
