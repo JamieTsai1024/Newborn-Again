@@ -15,6 +15,7 @@ const HomePage = () => {
 
   // const [user, setUser] = useState<Models.Account<Models.Preferences>>();
 
+  // TODO: comment to not kick out unlogged in users - do we want unauthed users?
   useEffect(() => {
     console.log("hi again");
     account
