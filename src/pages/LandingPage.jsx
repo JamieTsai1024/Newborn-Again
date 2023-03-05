@@ -1,8 +1,10 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
+import { useNavigate } from "react-router";
 
 const LandingPage = ({ onScrollClick }) => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -33,6 +35,7 @@ const LandingPage = ({ onScrollClick }) => {
             fontSize: "30px",
             textTransform: "none",
           }}
+          onClick={() => navigate("/browse")}
         >
           Start Browsing
         </Button>
