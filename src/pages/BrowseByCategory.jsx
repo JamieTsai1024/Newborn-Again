@@ -13,7 +13,7 @@ const BrowseByCategory = () => {
         pb: "100px",
       }}
     >
-      <Typography variant="h2" sx={{ fontWeight: 500, py: "60px" }}>
+      <Typography variant="h2" sx={{ fontWeight: 700, py: "100px" }}>
         Browse By Category
       </Typography>
       <Grid container spacing={4} sx={{ width: "70%" }}>

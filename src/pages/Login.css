@@ -3,7 +3,9 @@
     align-items: center;
     display: flex;
     height: 100%;
-    background-image: linear-gradient(to bottom right, #a378e4, #FCB9C0, #FFE9AA);
+    /* background-image: linear-gradient(to bottom right, #a378e4, #FCB9C0, #FFE9AA); */
+    background-image: linear-gradient(to bottom right, #89b9d3, #d9d9f3, #F3C0D0);
+
 }
 
 .login-box{

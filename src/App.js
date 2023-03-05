@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider, Link, Typography } from "@mui/material";
 import "./App.css";
 import React from "react";
 import HomePage from "./pages/HomePage";
@@ -15,6 +15,27 @@ const theme = createTheme({
 
 function App() {
   return (
+    <div className="Test">
+        <div className="bwub">
+          <Typography className="siteName" variant="h5">Newborn Again</Typography>
+          <div className="nav">
+            <Link href="/" variant="h6" className="NavItem">
+              Home
+            </Link >
+            <Link href="/browse" variant="h6"  className="NavItem">
+              Browse
+            </Link >
+            <Link variant="h6" className="NavItem">
+              Donate
+            </Link>
+            <Link href="/login" variant="h6" className="NavItem">
+              Login
+            </Link >
+          </div>
+          
+          
+        </div>
+
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
