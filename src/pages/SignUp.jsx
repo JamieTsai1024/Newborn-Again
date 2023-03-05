@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { account } from "../api/api";
-import { ID } from "appwrite";
 import { useNavigate } from "react-router";
+import { api } from "../api/api";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -14,29 +13,34 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await account
-        .create(ID.unique(), user.email, user.password, user.name)
-        .then(
-          (response) => {
-            console.log("response from handleSignUp create", response);
-            navigate("/");
-          },
-          (error) => {
-            console.log("errorfrom handleSignUp create", error);
-          }
-        );
-      await account.createEmailSession(user.email, user.password).then(
-        (response) => {
-          console.log(
-            "response from handleSignUp createEmailSession",
-            response
-          );
-          navigate("/");
-        },
-        (error) => {
-          console.log("error from handleSignUp createEmailSession", error);
-        }
-      );
+      await api.createAccount(user.email, user.password, user.name);
+      await api
+        .createSession(user.email, user.password)
+        .then((response) => navigate("/"));
+
+      // await account
+      //   .create(ID.unique(), user.email, user.password, user.name)
+      //   .then(
+      //     (response) => {
+      //       console.log("response from handleSignUp create", response);
+      //       navigate("/");
+      //     },
+      //     (error) => {
+      //       console.log("errorfrom handleSignUp create", error);
+      //     }
+      //   );
+      // await account.createEmailSession(user.email, user.password).then(
+      //   (response) => {
+      //     console.log(
+      //       "response from handleSignUp createEmailSession",
+      //       response
+      //     );
+      //     navigate("/");
+      //   },
+      //   (error) => {
+      //     console.log("error from handleSignUp createEmailSession", error);
+      //   }
+      // );
     } catch (e) {
       console.log(e);
     }

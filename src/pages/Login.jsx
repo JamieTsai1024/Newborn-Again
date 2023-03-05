@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { account } from "../api/api";
+import { api } from "../api/api";
 import { useNavigate } from "react-router";
 
 const Login = () => {
@@ -12,15 +12,9 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await account.createEmailSession(user.email, user.password).then(
-        (response) => {
-          console.log("response from create email session!!", response);
-          navigate("/");
-        },
-        (error) => {
-          console.log("error from create email session!!", error);
-        }
-      );
+      await api
+        .createSession(user.email, user.password)
+        .then((response) => navigate("/"));
     } catch (e) {
       console.log(e);
     }
