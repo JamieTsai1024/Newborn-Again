@@ -1,26 +1,22 @@
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 import React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
+const makeImages = () => {
+  const images = [];
+  for (let i = 0; i < 4; i++) {
+    images.push(
+      <img
+        src="/images/baby-clothes.jpg"
+        alt="test"
+        style={{
+          width: "23%",
+          height: "200px",
+          objectFit: "cover",
+        }}
+      />
+    );
+  }
+  return images;
 };
 
 const ProductPage = () => {
@@ -101,38 +97,12 @@ const ProductPage = () => {
         </Box>
       </Box>
       <Box sx={{ width: "80%" }}>
-        <Carousel
-          responsive={responsive}
-          draggable={false}
-          renderButtonGroupOutside
-          itemClass="carousel-item-padding-40px"
-        >
-          <img
-            src="/images/baby-clothes.jpg"
-            alt="test"
-            style={{ width: "300px", height: "200px", objectFit: "cover" }}
-          />
-          <img
-            src="/images/baby-clothes.jpg"
-            alt="test"
-            style={{ width: "300px", height: "200px", objectFit: "cover" }}
-          />
-          <img
-            src="/images/baby-clothes.jpg"
-            alt="test"
-            style={{ width: "300px", height: "200px", objectFit: "cover" }}
-          />
-          <img
-            src="/images/baby-clothes.jpg"
-            alt="test"
-            style={{ width: "300px", height: "200px", objectFit: "cover" }}
-          />
-          <img
-            src="/images/baby-clothes.jpg"
-            alt="test"
-            style={{ width: "300px", height: "200px", objectFit: "cover" }}
-          />
-        </Carousel>
+        <Typography variant="h4" gutterBottom>
+          Continue Browsing
+        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          {makeImages()}
+        </Box>
       </Box>
     </Box>
   );
