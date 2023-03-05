@@ -12,6 +12,7 @@ const makeImages = () => {
           width: "23%",
           height: "200px",
           objectFit: "cover",
+          borderRadius: "15px",
         }}
       />
     );
@@ -34,7 +35,7 @@ const ProductPage = () => {
         <img
           src="/images/baby-clothes.jpg"
           alt="test"
-          style={{ width: "40%", objectFit: "cover" }}
+          style={{ width: "30%", objectFit: "cover", borderRadius: "15px" }}
         />
         <Box
           sx={{
@@ -50,7 +51,7 @@ const ProductPage = () => {
               justifyContent: "space-between",
             }}
           >
-            <Box sx={{ width: "45%" }}>
+            <Box sx={{ width: "40%" }}>
               <Typography
                 variant="h3"
                 sx={{ wordWrap: "break-word" }}
@@ -66,10 +67,21 @@ const ProductPage = () => {
                   <Typography variant="h6">Location</Typography>
                   <Typography variant="h6">Condition</Typography>
                 </Box>
+                <Box sx={{ ml: "40px", color: "dimgray" }}>
+                  <Typography variant="h6">Ottawa</Typography>
+                  <Typography variant="h6">New</Typography>
+                </Box>
               </Box>
             </Box>
             <Box
-              sx={{ display: "flex", flexDirection: "column", width: "45%" }}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "50%",
+                borderRadius: "15px",
+                border: "solid 1px black",
+                pl: "10px",
+              }}
             >
               <Typography variant="h3" gutterBottom>
                 Contact Information
@@ -78,6 +90,10 @@ const ProductPage = () => {
                 <Box>
                   <Typography variant="h6">Phone Number</Typography>
                   <Typography variant="h6">Email</Typography>
+                </Box>
+                <Box sx={{ ml: "40px", color: "dimgray" }}>
+                  <Typography variant="h6">1234567890</Typography>
+                  <Typography variant="h6">email@email.com</Typography>
                 </Box>
               </Box>
             </Box>
@@ -96,7 +112,7 @@ const ProductPage = () => {
           </Typography>
         </Box>
       </Box>
-      <Box sx={{ width: "80%" }}>
+      <Box sx={{ width: "80%", mb: "50px" }}>
         <Typography variant="h4" gutterBottom>
           Continue Browsing
         </Typography>
