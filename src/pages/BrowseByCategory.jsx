@@ -17,8 +17,8 @@ const BrowseByCategory = () => {
         Browse By Category
       </Typography>
       <Grid container spacing={4} sx={{ width: "70%" }}>
-        {categories.map((value) => (
-          <Grid item xs={4}>
+        {categories.map((value, id) => (
+          <Grid item xs={4} key={id}>
             <Category
               category={value.title}
               src={value.src}
