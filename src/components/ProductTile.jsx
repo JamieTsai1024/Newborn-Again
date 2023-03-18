@@ -2,6 +2,7 @@ import React from "react";
 import { api } from "../api/api";
 import { Box, Card, CardMedia } from "@mui/material";
 import "../pages/Browse.css";
+import { Server } from "../utils/config";
 
 const ProductTile = ({ post }) => {
   return (
@@ -19,8 +20,8 @@ const ProductTile = ({ post }) => {
         >
           <CardMedia
             component="img"
-            src={api.getFilePreview("6404413ed6aa6c044fe7", post.image)}
-            alt={api.getFileById("6404413ed6aa6c044fe7", post.image).fileName}
+            src={api.getFilePreview(Server.bucketID, post.image)}
+            alt={api.getFileById(Server.bucketID, post.image).fileName}
             sx={{
               height: "auto",
               width: "90%",

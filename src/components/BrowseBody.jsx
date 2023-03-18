@@ -4,6 +4,7 @@ import { api } from "../api/api";
 import { Grid } from "@mui/material";
 import ProductTile from "./ProductTile";
 import "../pages/Browse.css";
+import { Server } from "../utils/config";
 
 const BrowseBody = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const BrowseBody = () => {
 
   useEffect(() => {
     api
-      .listDocuments("6403d5d8bfa5e8fe29e1", "6403d600199676c85a34")
+      .listDocuments(Server.databaseID, Server.collectionID)
       .then((documents) => {
         setPosts(
           category === "all"
@@ -25,7 +26,7 @@ const BrowseBody = () => {
 
   useEffect(() => {
     api
-      .listDocuments("6403d5d8bfa5e8fe29e1", "6403d600199676c85a34")
+      .listDocuments(Server.databaseID, Server.collectionID)
       .then((documents) => {
         setPosts(documents.documents);
       });
@@ -44,8 +45,8 @@ const BrowseBody = () => {
               key={post.$id}
               onClick={() => {
                 // setSeletectedPostId(post.$id);
-                navigate("/product");
                 // navigate(`/product=${post.$id}`);
+                navigate("/product");
               }}
             >
               <ProductTile post={post} />
