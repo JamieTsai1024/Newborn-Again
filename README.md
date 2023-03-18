@@ -1,6 +1,6 @@
 # Newborn Again 🐣
 
-![landing](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/Jamie%20Tsai/Documents/Projects/WiCHacks/wichacks/image/README/landing.png)
+![landing](image/README/landing.png)
 
 Newborn Again is an app for parents to donate their baby items to new parents. This project was created for WiCHacks 2023 using Node.js, React, Material UI, and Appwrite.
 
