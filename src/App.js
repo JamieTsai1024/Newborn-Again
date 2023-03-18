@@ -1,6 +1,6 @@
-import { createTheme, ThemeProvider, Link, Typography } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import HomePage from "./pages/HomePage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -15,8 +15,6 @@ const theme = createTheme({
 });
 
 function App() {
-  // const { selectedPostId, setSelectedPostId } = useState("");
-
   return (
     <div className="Test">
       <Navbar />

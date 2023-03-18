@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { api } from "../api/api";
-import { Grid, Box, Card, CardMedia, CardContent } from "@mui/material";
+import { Grid } from "@mui/material";
 import ProductTile from "./ProductTile";
 import "../pages/Browse.css";
 

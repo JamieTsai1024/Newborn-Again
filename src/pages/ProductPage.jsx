@@ -2,7 +2,6 @@ import { Box, Breadcrumbs, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { api } from "./../api/api";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router-dom";
 import ProductTile from "../components/ProductTile";
 
 const ProductPage = () => {
