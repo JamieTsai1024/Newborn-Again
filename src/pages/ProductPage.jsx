@@ -2,8 +2,8 @@ import { Box, Breadcrumbs, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { api } from "./../api/api";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router-dom";
 import ProductTile from "../components/ProductTile";
+import { Server } from "../utils/config";
 
 const ProductPage = () => {
   const postId = "6404b5ff7a27c5785647";
@@ -21,25 +21,19 @@ const ProductPage = () => {
   useEffect(() => {
     if (postId) {
       api
-        .getDocumentById(
-          "6403d5d8bfa5e8fe29e1",
-          "6403d600199676c85a34",
-          postId
-          //   Server.databaseID,
-          //   Server.collectionID,
-        )
+        .getDocumentById(Server.databaseID, Server.collectionID, postId)
         .then((post) => {
           setPost(post);
         });
       api
-        .listDocuments("6403d5d8bfa5e8fe29e1", "6403d600199676c85a34")
+        .listDocuments(Server.databaseID, Server.collectionID)
         .then((documents) => {
           setFeaturedPosts(documents.documents);
         });
     } else {
       navigate("/browse");
     }
-  }, [postId]);
+  }, [navigate, postId]);
 
   return (
     <Box
@@ -61,8 +55,10 @@ const ProductPage = () => {
               borderRadius: "15px",
               boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
             }}
-            src={api.getFilePreview("6404413ed6aa6c044fe7", post.image)}
-            alt={api.getFileById("6404413ed6aa6c044fe7", post.image).fileName}
+            src={api.getFilePreview(Server.REACT_APP_BUCKET_ID, post.image)}
+            alt={
+              api.getFileById(Server.REACT_APP_BUCKET_ID, post.image).fileName
+            }
           />
         )}
 

@@ -1,11 +1,8 @@
 import { Grid, Typography, Box } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router";
 import Category from "../components/Category";
 
 const BrowseByCategory = () => {
-  const navigate = useNavigate();
-
   return (
     <Box
       sx={{

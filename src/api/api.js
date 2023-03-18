@@ -1,4 +1,5 @@
 import { Client, Account, Databases, Storage, ID } from "appwrite";
+import { Server } from "../utils/config";
 
 let api = {
   sdk: null,
@@ -6,11 +7,9 @@ let api = {
   provider: () => {
     if (api.sdk) return api.sdk;
     const client = new Client();
-    client
-      .setEndpoint("http://localhost/v1")
-      .setProject("6403cc0462a92a2d3123");
+    client.setEndpoint(Server.endpoint).setProject(Server.projectID);
     const account = new Account(client);
-    const database = new Databases(client, "6403d5d8bfa5e8fe29e1");
+    const database = new Databases(client, Server.REACT_APP_DATABASE_ID);
     const storage = new Storage(client);
 
     api.sdk = { database, account, storage };

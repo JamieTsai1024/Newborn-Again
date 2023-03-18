@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { api } from "./../api/api";
 import { Permission, Role } from "appwrite";
 import { Box, Button, MenuItem, TextField } from "@mui/material";
+import { Server } from "../utils/config";
 
 const AddPostPage = () => {
   const navigate = useNavigate();
@@ -26,13 +27,11 @@ const AddPostPage = () => {
     e.preventDefault();
     // TODO: later for anonymous sessions, use account.createAnonymousession(); https://youtu.be/DkchyIDef18?t=182
     try {
-      const newImage = await api.createFile("6404413ed6aa6c044fe7", image);
+      const newImage = await api.createFile(Server.bucketID, image);
       console.log("post", post, newImage.$id);
       await api.createDocument(
-        "6403d5d8bfa5e8fe29e1",
-        "6403d600199676c85a34",
-        //   Server.databaseID,
-        //   Server.collectionID,
+        Server.databaseID,
+        Server.collectionID,
         { ...post, image: newImage.$id },
         [
           Permission.read(Role.user(user["$id"])),
@@ -53,7 +52,7 @@ const AddPostPage = () => {
         setUser(account);
       })
       .catch((error) => navigate("/login"));
-  }, []);
+  }, [navigate, post]);
 
   return (
     <section className="login-container">
